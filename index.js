@@ -13,7 +13,7 @@ const app = express()
 
 
 //server
-const port = process.env.PORT || 3300
+const port = 3000
 
 // ---------------Autorisation des rêquetes-----------//
 
