@@ -13,7 +13,7 @@ const app = express()
 
 
 //server
-const port = 8080
+const port = process.env.PORT || 8080
 
 // ---------------Autorisation des rêquetes-----------//
 
@@ -101,8 +101,8 @@ app.use('/images', express.static('images'))
 
 
 //lecture du port
-app.listen(8080, ()=>{
-    console.log('Express Server is running on port :', 8080)
+app.listen(port, ()=>{
+    console.log('Express Server is running on port :', port)
 })
 
 
