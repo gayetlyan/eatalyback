@@ -3,8 +3,6 @@ const express = require ('express')
 const bodyParser = require('body-parser')
 // const jwt = require('jsonwebtoken')
 
-// process.env.ACCESS_TOKEN_SECRET
-//const loginRoutes = require('./loginRoutes').router
 
 
 
@@ -12,10 +10,25 @@ const bodyParser = require('body-parser')
 //creer l'app express
 const app = express()
 
-//app.use(cors())
+
 
 //server
-const port = process.env.PORT || 5200
+const port = process.env.PORT || 3300
+
+// ---------------Autorisation des rêquetes-----------//
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    );
+    next();
+  });
 
 //parse request data content type application/x-ww-form-rulencoded
 app.use(bodyParser.urlencoded({extended: false}))
@@ -33,7 +46,6 @@ app.get('/', (req, res)=> {
 
 
 
-// require('./app/routes/auth.routes')(app);
 
 
 
@@ -56,8 +68,7 @@ const localiteRoutes = require('./src/routes/localite.routes')
 //import des cartes routes
 const carteRoutes = require('./src/routes/carte.routes')
 
-// //import des logins
-// const loginRoutes = require('./src/routes/login.routes')
+
 
 
 
@@ -78,29 +89,10 @@ app.use('/api/v1/localite', localiteRoutes)
 //creation des cartes
 app.use('/api/v1/carte', carteRoutes)
 
-// //creation des logins
-// app.use('/api/v1/login', loginRoutes)
+//creation desimages
+app.use('/images', express.static('images'))
 
 
-
-
-// function generateAccessToken(userRoutes){
-//     return jwt.sign(userRoutes, process.env.ACCESS_TOKEN_SECRET, {expiresIn : '1800s'})
-// }
-
-// app.post('/api/v1/login', (req, res) =>{
-//     if (req.body.email_user != userRoutes.email_user){
-//         res.status(401).send('invalid credentials')
-//         return
-//     }
-//     if (req.body.password_user != userRoutes.password_user){
-//         res.status(401).send('invalid credentials')
-//         return
-//     }
-//     const accessToken = generateAccessToken(userRoutes)
-//     res.send({accessToken})
-    
-// })
 
 
 

@@ -2,6 +2,7 @@ const express  = require('express')
 const router = express.Router()
 
 const carteController = require('../controllers/carte.controller')
+const authJwt = require('../middleware/authJwt')
 
 
 //

@@ -9,7 +9,7 @@ const restaurantController = require('../controllers/restaurant.controller')
 //RESTAURANT
 
 //avoir tous les restaurants
-router.get('/',authJwt , restaurantController.getRestaurantList)
+router.get('/', restaurantController.getRestaurantList)
 
 //avoir les restaurants par id
 router.get('/:idrestaurant', restaurantController.getRestaurantByID)
@@ -21,10 +21,10 @@ router.get('/:nom_restaurant', restaurantController.getRestaurantByNAME)
 router.post('/', restaurantController.createNewRestaurant)
 
 //suppression restaurant par id
-router.delete('/:idrestaurant', restaurantController.deleteRestaurant)
+router.delete('/:idrestaurant', authJwt, restaurantController.deleteRestaurant)
 
 //suppression restaurant par nom
-router.delete('/:nom_restaurant', restaurantController.deleteRestaurant2)
+router.delete('/:nom_restaurant', authJwt, restaurantController.deleteRestaurant2)
 
 
 module.exports = router

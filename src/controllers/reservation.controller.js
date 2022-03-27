@@ -37,6 +37,24 @@ exports.getReservationByIDr = (req, res) =>{
 }
 
 
+//avoir la liste des reservations par idreservation
+exports.getReservation = (req, res) =>{
+    //console.log('get user by id')
+   
+    ReservationModel.getAllReservation((err, reservation)=>{
+        if(err){
+            console.log(err); 
+            res.send(err)
+        } else {
+            console.log('single reservation data', reservation)
+            res.send(reservation)
+        }
+        
+    })
+}
+
+
+
 
 
 //creation de reservation

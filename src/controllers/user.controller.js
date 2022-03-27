@@ -1,8 +1,8 @@
-//const { genSaltSync, hashSync } = require('bcrypt')
+
 const UserModel = require('../models/user.models')
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-//const { create } = require('../models/user.models')
+
 
 
 exports.signUp = (req, res) => {
@@ -67,8 +67,9 @@ exports.login = (req, res) => {
                                 res.status(200).json({
                                     message: 'Authentification ok!',
                                     token: token,
-                                    userId: result.iduser,
-                                    email: result.email_user
+                                    userId:  results[0].iduser,
+                                    email:  results[0].email_user,
+                                    is_admin :  results[0].is_admin
                                 });
                             }
                         );
@@ -135,26 +136,6 @@ exports.createNewUser = (req, res) => {
 }
 
 
-// //creation de user partie 2
-// module.exports = {
-//     createNewUser: (req, res) =>{
-//         const body = req.body
-//         const salt = genSaltSync(10)
-//         body.password_user= hashSync(body.password_user, salt)
-//         create(body, (err, results) =>{
-//             if (err){
-//                 return res.status(500).json({
-//                     succes : 0, 
-//                     message : 'Database connection error'
-//                 })
-//             }
-//             return res.status(200).json({
-//                 success : 1,
-//                 data : results
-//             })
-//         })
-//     }
-// }
 
 
 //update User

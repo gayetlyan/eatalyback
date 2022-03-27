@@ -9,17 +9,28 @@ var Reservation = function(reservation){
 
 
 
-
+//Reservation
+Reservation.getAllReservation = (result) =>{
+    dbConn.query('SELECT * from reservations', (err, res)=>{
+        if(err){
+            console.log('Error while fetching reservation ', err)
+            result(null, err)
+        }
+        else{
+            result(null, res)
+        }
+    })
+}
 
 //Reservation by IDuser
 Reservation.getReservationByID = (iduser, result) =>{
-    dbConn.query('SELECT * from reservations WHERE iduser=?', iduser, ()=>{
+    dbConn.query('SELECT * from reservations WHERE iduser=?', iduser, (err,res)=>{
         if(err){
             console.log('Error while fetching reservation by iduser ', err)
             result(null, err)
         }
         else{
-            result(null, err)
+            result(null, res)
         }
     })
 }
