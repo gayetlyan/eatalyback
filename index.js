@@ -101,8 +101,8 @@ app.use('/images', express.static('images'))
 
 
 //lecture du port
-app.listen(process.env.APP_PORT, ()=>{
-    console.log('Express Server is running on port :', process.env.APP_PORT)
+app.listen(3000, ()=>{
+    console.log('Express Server is running on port :', 3000)
 })
 
 
