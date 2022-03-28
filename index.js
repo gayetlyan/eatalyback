@@ -3,7 +3,7 @@ const express = require ('express')
 const bodyParser = require('body-parser')
 // const jwt = require('jsonwebtoken')
 const cors = require("cors")
-app.use(cors())
+
 
 
 
@@ -15,7 +15,7 @@ const app = express()
 
 //server
 const port = process.env.PORT || 8080
-
+app.use(cors())
 // ---------------Autorisation des rêquetes-----------//
 
 app.use((req, res, next) => {

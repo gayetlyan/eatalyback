@@ -84,6 +84,7 @@ Carte.createCarte = (carteReqData, result)=>{
 
 //uptade carte
 Carte.updateCarte = (idMenu, carteReqData, result)=>{
+    
     dbConn.query("UPDATE cartes SET categorie=?, nom_menu=?, composition_menu=?, prix_menu=? WHERE idMenu=?", [carteReqData.categorie, carteReqData.nom_menu, carteReqData.composition_menu, carteReqData.prix_menu, idMenu], (err, res)=>{
         if(err){
             console.log('Error while uptading the carte')
