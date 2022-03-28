@@ -93,6 +93,7 @@ Carte.updateCarte = (idMenu, carteReqData, result)=>{
         else{
             console.log('Carte update successfully')
             result(null, res)
+            //ok
         }
     })
 }
